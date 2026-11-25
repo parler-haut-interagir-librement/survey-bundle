@@ -4,6 +4,15 @@ All notable changes to `phil/survey-bundle` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## 0.1.1-alpha - 2026-11-25
+
+### Security
+
+- The marks of participation were the HMAC under `secret` itself, `%kernel.secret%` by default, which other bundles
+  keyed their own hashes with. `Participations` derives its key by HKDF-SHA256 under `phil_survey.participation`
+  (`Participations::USAGE`). The marks kept change: a member who answered before the update can answer once more, and a
+  request about them no longer finds their earlier marks.
+
 ## 0.1.0-alpha - 2026-11-24
 
 ### Added
